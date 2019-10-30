@@ -1,0 +1,59 @@
+\documentclass[a4paper, 10pt]{report}
+\usepackage{inputenc}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage[backend=bibtex, style=authoryear, sorting=nyt]{biblatex}
+\addbibresource{citations.bib}
+
+\newcommand{\fypUniversity}{Brunel University London}
+\newcommand{\fypCollege}{College of Engineering, Design and Physical Sciences}
+\newcommand{\fypDepartment}{Department of Computer Science}
+\newcommand{\fypCourse}{BSc (Hons) Computer Science}
+\newcommand{\fypStudent}{Dominic Cobo}
+\newcommand{\fypStudentId}{1422016}
+\newcommand{\fypSupervisor}{tbd}
+\newcommand{\fypAcademicYear}{2019-2020}
+\newcommand{\fypTitle}{CS3003 Assignment Report}
+
+% Define the page margins
+\geometry{
+	left=20mm,
+	right=20mm, 
+	top=15mm,
+	bottom=25mm
+}
+
+\begin{document}
+	\begin{titlepage}
+		\centering
+		\begin{figure}
+			\includegraphics[width=\linewidth]{logo.png}
+		\end{figure}
+		\textsc{\LARGE \fypCourse}
+		
+		\textsc{\large Academic Year \fypAcademicYear}
+		
+		\rule{\linewidth}{0.5mm} \\[0.5cm]
+		{ \huge\textbf { \fypTitle } } \\
+		\rule{\linewidth}{0.5mm} \\[6cm]
+		
+		
+		\textsc{\huge \fypStudent}
+		
+		\textsc{\large \fypStudentId}
+		
+		\bigskip
+		
+	\end{titlepage}
+	
+	\newpage
+	\twocolumn
+	\input{what_matters_in_code}
+	\input{methodology}
+	\input{dataset_choice}
+	\input{analysis_and_discussion}
+	
+
+	\printbibliography
+	
+\end{document}
