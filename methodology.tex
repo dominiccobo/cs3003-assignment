@@ -1,1 +1,61 @@
 \section{Methodology}
+
+The latest mainline branch of an open source software system was cloned from the GitHub Git Version Control System. A set of tools was then used to analyse and measure the dataset for the below.
+
+\begin{description}
+	\item [Code-smell frequency] 
+	
+	Measurement the number of code smells and their frequency across methods, classes and packages.
+	
+	\begin{table}[H]
+		\begin{tabular}{ | l | l | l |}
+			\hline
+			Imperative Abstraction & Multifaceted Abstraction & Unnecessary Abstraction \\
+			\hline
+			Unutilised Abstraction & Deficient Encapsulation & Unexploited Encapsulation \\
+			\hline
+			Broken Modularization & Broken Hierarchy & Cyclic Hierarchy \\
+			\hline
+			Cyclic-Dependent Modularization & Insufficient Modularization & Hub-like Modularization \\
+			\hline
+			Deep Hierarchy & Missing Hierarchy & Multipath Hierarchy \\ 
+			\hline
+			Wide Hierarchy & Abstract Function Call From Constructor & Rebellious Hierarchy \\
+			\hline
+			Complex Conditional & Complex Method & Empty catch clause \\
+			\hline
+			Long Identifier & Long Method & Long Parameter List \\
+			\hline
+			Long Statement & Magic Number & Missing default \\
+			\hline
+		\end{tabular}
+		\caption{Supported code smells by used tool}
+		\label{tab:supportedCodeSmells}
+	\end{table}
+	
+	\item [Attribute naming descriptiveness]
+	
+	Lexically parsing function, variable and class names with an evaluation of the correlative semantic similarities between each.
+	
+	\item [Test coverage] Test coverage provides a rough idea of how many statements are executed throughout a test suite. 
+	
+	This metric will likely suffer from the pitfalls that lines may very well be executed, but incorrect assertions may result in 'untested' code.
+		
+	\item [Lines of Production code vs Lines of Test Code Ratio] 
+	
+	Understanding the ratio between lines of production code and test code ratio should roughly signal the effort delivered to ensure functionality feedback can be easily obtained.
+	
+	This could be reinforced using an assertion density comparison.
+	
+	%TODO :	 read up on http://wiki.c2.com/?ProductionCodeVsUnitTestsRatio
+	
+	\item [Cyclomatic complexity] 
+	
+	A metric aimed at measuring the structuredness of the code by measuring the number of avenues of execution. 
+	
+	Tests should be clear and non-complex. Production code is likely to have a far higher complexity. Higher complexity should suggest the requirement for focusing on testability.
+	
+	% TODO Is code standards adherance / violation frequency also a viable venue to explore 
+	
+	\item [Maintainability Index (Control Benchmark)] As a control benchmark, the Maintainability index (including lines of comments) will be measured.
+\end{description}
