@@ -16,9 +16,9 @@ However, when examining the correlation coefficient of each metric against the H
 	\label{fig:tccHeffClassLevel}  
 \end{figure}
 
-There is a moderate correlation \textit{(0.570)} (Figure \ref{fig:tccHeffClassLevel}) between total Cyclomatic Complexity and the Halstead Effort which is expected as the number of routes through a class increases, so will the mental taxation.
+There is a moderate correlation \textit{(0.570)} (Figure \ref{fig:tccHeffClassLevel}) between total Cyclomatic Complexity and the Halstead Effort which is expected as the number of routes through a class increases, so will the mental taxation of maintaining that class. 
 
-There is also a very weak correlation (0.062), with a significance at the 0.05 level, between test coverage and Halstead Effort, which indicates there's a very small chance that as contributors increase the coverage of tests where they feel difficulty. However, this is too weak to consider at this level.
+There is also a very weak correlation (0.062), with a significance at the 0.05 level, between test coverage and Halstead Effort, which indicates there's a very small chance that contributors increase the coverage of tests where they feel difficulty. However, this is too weak to consider at this level of analysis.
 
 \begin{figure}[H]
 	\includegraphics[width=\linewidth]{heff_MI_class_level.png}
@@ -26,9 +26,9 @@ There is also a very weak correlation (0.062), with a significance at the 0.05 l
 	\label{fig:heffMIClassLevel}  
 \end{figure}
 
-An interesting result is the significant negative weak correlation (0.311) between the Halstead Effort and the Maintainability Index (Fig \ref{fig:heffMIClassLevel}). This would oddly seem to indicate for this particular system, at class level, that as one increases the other decreases; this would seem to show they are measuring vastly different effects of maintainability - something we hypothesised earlier.
+An interesting result is the significant negative weak correlation (0.311) between the Halstead Effort and the Maintainability Index (Fig \ref{fig:heffMIClassLevel}). This would oddly seem to indicate for this particular system, at class level, that as one increases the other decreases; this may suggest they are measuring vastly different effects of maintainability - something we hypothesised earlier.
 
-It is important to consider at this point we are talking about the maintenance of software. Code evolution rarely occurs to an isolate single source code file. Consider evolving tests alongside a change in the production code; or related components needing changing to achieve a single outcome. This leads to further our analysis to cover a more holistic point of view: packages.
+It is important to consider at this point we are talking about the maintenance of software. Code evolution rarely occurs to an isolate single source code file. Consider evolving tests alongside a change in the production code; or related components needing changing to achieve a single outcome. This leads to further our analysis to cover a more holistic point of view: packages. We understand the applicability of this hypothesis about changes by invoking the \textit{git log} with the \textit{stat} flag appended against the source code repository.
 
 %at pkg level....
 
@@ -38,7 +38,7 @@ It is important to consider at this point we are talking about the maintenance o
 	\label{fig:pkgLevelSpearmans}  
 \end{figure}
 
-When we perform a similar analysis using the same metrics at package level (Figure \ref{fig:pkgLevelSpearmans}), we begin to see strongly pronounced trends between the metrics.  Yet again, as commented previously, the Maintainability Index bares no correlation at all.
+When we perform a similar analysis using the same metrics at package level (Figure \ref{fig:pkgLevelSpearmans}), we begin to see strongly pronounced trends between the metrics. Yet again, as with Class Level, the Maintainability Index bares no correlation at all.
 
 \begin{figure}[H]
 	\includegraphics[width=\linewidth]{code_smells_vs_heff_pkg_level.png}
@@ -98,6 +98,6 @@ Production to test LOC Ratio and Average Assertion Density correlate strongly \t
 
 Overall, these trends appear to show that code smells do play an effect on how the contributors assess test importance in maintenance. This plays along the research lines suggested by \textcite{palomba2018diffuseness} where acknowledgement of code smells is demonstrated to have a positive effect on certain aspects of maintainability.
 
-Given how strongly code smells correlate with the Halstead Effort and Cyclomatic Complexity and both of these correlations with the test-based metrics, we can see the importance of tests on the mental effort and the actual complexity of code. This further supports that an increase in change-proneness, a creative process, can result in attention being paid to code smells. 
+Given how strongly Code Smells correlate with the Halstead Effort and Cyclomatic Complexity, and both of these with the test-based metrics, we can see the importance of tests on the mental effort and the actual complexity of code. This further supports that an increase in change-proneness, a creative process, can result in attention being paid to code smells. 
 
 This, in line with the introductory literature, could superficially justify the importance of tests to reduce unnecessary future mental taxation during evolution of software. 
