@@ -82,7 +82,7 @@ Cyclomatic complexity, showing similar trends to that of the Halstead Effort cou
 
 Mean Test Line Coverage and Mean Assertion Density bare a weak correlation \textit{(0.351)} which suggests that when more lines of code are tested, there is also a tendency to increase the number of assertions made in each test case.
 
-Code smells and Production to Test LOC Ratio show a moderate correlation \textit{(0.492)} which could indicate that code smells originate where there are less tests guiding the maintenance.
+Code smells and Production to Test LOC Ratio show a moderate correlation \textit{(0.492)} which could indicate that code smells originate where there are less tests guiding the maintenance. 
 
 Code smells and Mean Test Coverage show a moderate correlation \textit{(0.503)} which could indicate that where code smells increase, there is a tendency to result to a greater test coverage. 
 
@@ -96,4 +96,8 @@ Code smells and Mean Assertion Density moderate correlation \textit{(0.557)}, re
 
 Production to test LOC Ratio and Average Assertion Density correlate strongly \textit{(0.613)}. This could imply a tendency (Figure \ref{fig:prodtestRatioVsMeanAssertDensity}) for resorting to more assertions in a test case as opposed to more granular test cases that assert individual behaviour.
 
-Overall, these trends appear to show that code smells do play an effect on how the contributors assess the importance of tests. Moreover, given how strongly code smells correlate with the Halstead Effort and Cyclomatic Complexity, we can see the importance of tests on the mental effort and the actual complexity of code. This, in line with the introductory literature, could superficially justify the importance of tests to reduce unnecessary future mental taxation during evolution of software. It could also support a trend that TDD is beneficial.
+Overall, these trends appear to show that code smells do play an effect on how the contributors assess test importance in maintenance. This plays along the research lines suggested by \textcite{palomba2018diffuseness} where acknowledgement of code smells is demonstrated to have a positive effect on certain aspects of maintainability.
+
+Given how strongly code smells correlate with the Halstead Effort and Cyclomatic Complexity and both of these correlations with the test-based metrics, we can see the importance of tests on the mental effort and the actual complexity of code. This further supports that an increase in change-proneness, a creative process, can result in attention being paid to code smells. 
+
+This, in line with the introductory literature, could superficially justify the importance of tests to reduce unnecessary future mental taxation during evolution of software. 
