@@ -1,11 +1,19 @@
 \section{Methodology}
 
-The latest mainline branch of an open source software system was cloned from the GitHub Git Version Control System. A set of tools was then used to analyse and measure the dataset for the below.
+The latest mainline branch of an open source software system was cloned from the GitHub Git VCS. This was then subjected to analysis by multiple tools which are discussed below. Not all metrics could be collected at class-level, such as lines of test code and lines of production code, and as such for observation, metrics were collated at a package level.
+
+To ensure that the brief of what was required was met, these were then compared against the results provided at class level with the expectation of shared trends. 
+
+For each metric, a correlative grid was composed, using Spearman's test. The correlation coefficient and statistical significance were analysed to draw correlations. Where both were indicative of correlation, further analysis was conducted.
+
+\subsection{Chosen Metrics}
 
 \begin{description}
-	\item [Code-smell frequency] 
+	\item [Implementation Code-smell frequency] Code smells identify areas where problems may be brewing within the code. They are not necessarily an indication of a problem, but highlight the necessity of attention. \parencite[chapter~3]{fowler1999refactoring}
 	
-	Measurement the number of code smells and their frequency across methods, classes and packages.
+	A measurement the number of code smells (table\ref{tab:supportedCodeSmells}) and their frequency across classes and packages was collected using the DesIgniteJava tool.
+	
+	The collection of metrics was performed using the DesIgniteJava tool \parencite{designiteToolGitHub}, another open source alternative to JDeoderant.
 	
 	\begin{table}[H]
 		\begin{tabular}{ | l | l | l |}
@@ -29,33 +37,41 @@ The latest mainline branch of an open source software system was cloned from the
 			Long Statement & Magic Number & Missing default \\
 			\hline
 		\end{tabular}
-		\caption{Supported code smells by used tool}
+		\caption{Supported implementation smells by used tool}
 		\label{tab:supportedCodeSmells}
 	\end{table}
 	
-	\item [Attribute naming descriptiveness]
+	\item [Executed Statements Test coverage] Test coverage provides a rough idea of how many statements are executed throughout a test suite and thus, supposedly, how well tested it is.
 	
-	Lexically parsing function, variable and class names with an evaluation of the correlative semantic similarities between each.
+	This metric was collected with the clear understanding of being subjected to easy developer manipulation; lines may very well be executed, but incorrect assertions may result in 'untested' code.
 	
-	\item [Test coverage] Test coverage provides a rough idea of how many statements are executed throughout a test suite. 
-	
-	This metric will likely suffer from the pitfalls that lines may very well be executed, but incorrect assertions may result in 'untested' code.
+	This metric was obtained through the coverage tool in JetBrains IntelliJ. The tests included were unit level, functional and integration oriented. 
 		
-	\item [Lines of Production code vs Lines of Test Code Ratio] 
+	\item [Lines of Production code vs Lines of Test Code Ratio] This metric indicates how many lines of production code exist per line of test code. 
 	
-	Understanding the ratio between lines of production code and test code ratio should roughly signal the effort delivered to ensure functionality feedback can be easily obtained.
+	Lines of code is clearly a subjective measure, as there are many factors that come into play, such as language expressiveness. Understanding that tests are generally implemented in the same language as the production code, we can understand how much implementation has gone into orchestrating the testing. 
 	
-	This could be reinforced using an assertion density comparison.
+	This should mainly be of interest as this ratio superficially indicate the level of effort delivered to ensure the how much functionality feedback to be obtained. 
 	
-	%TODO :	 read up on http://wiki.c2.com/?ProductionCodeVsUnitTestsRatio
+	Unfortunately, collecting this metric, we must understand the the class where a test is implemented is not always named the same as the class it is testing; from observability this is especially the case with functional and integration tests. To gather a measurement of this, we default to the understanding that functionality grouping in Java resorts to the use of packages, and as such we measure this at statistic at package level. Test code is assumed to be any code which is not implemented directly under the main folder in a standard Java source layout. 
 	
-	\item [Cyclomatic complexity] 
+	Interestingly, there are several variations of this metric that rather than focusing on code, focus on assertion density and control points.
 	
-	A metric aimed at measuring the structuredness of the code by measuring the number of avenues of execution. 
+	\item [Average Assertion Density] A tallied frequency of assertions made per given test case (method).
+	
+	Test suites in Java, are typically composed of methods each being a test case, which are executed under a given constructed context. Tests will execute any code which they are included in: this is referred to as Test Coverage. However, coverage does not necessarily indicate what functionality has been examined from the executed code.
+	
+	This is measured through the use of an in-house tool which assumes the use of JUnit. It collects all methods annotated with the JUnit \textit{@Test} annotation. It then collects the number of assertions present in each. This of course falls short of measuring all possible assertions as it is common in Java programming that custom assertion classes are built. 
+	
+	\item [Cyclomatic complexity] A metric aimed at measuring the code's \textit{level of structure} by analysing the number of avenues of execution. 
 	
 	Tests should be clear and non-complex. Production code is likely to have a far higher complexity. Higher complexity should suggest the requirement for focusing on testability.
 	
-	% TODO Is code standards adherance / violation frequency also a viable venue to explore 
+	\item [Maintainability Index (Control Benchmark)] A measurement of the effort required to maintain a given piece of code. 
 	
-	\item [Maintainability Index (Control Benchmark)] As a control benchmark, the Maintainability index (including lines of comments) will be measured.
+	As a control benchmark, the Maintainability index (including lines of comments) will be measured. It is understood and appreciated that the lines of code in a system can heavily influence and skew this metric and as such as we resort and fallback onto another similar metric for measuring the effort required to maintain software.
+	
+	\item[Halstead Effort (Main benchmark)] A measurement of the mental effort required to maintain a given piece of code.
+	
+	We focus on this as being the primary benchmark metric as our reasoning in what matters in code revolves around allowing developers to rapidly innovate, create and deliver changes. All of this requires cognitive resources which ideally should not be wasted on understanding code.
 \end{description}

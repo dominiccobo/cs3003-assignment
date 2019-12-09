@@ -1,1 +1,99 @@
 \section{Analysis and Discussion}
+
+\begin{figure}[H]
+	\includegraphics[width=\linewidth]{class-level-spearmans.png}
+	\caption{Class Level Spearman Correlation Analysis}
+	\label{fig:classLevelSpearmans}  
+\end{figure}
+
+The correlative tests (Figure \ref{fig:classLevelSpearmans}) indicate at a class level, as expected, weak trends \textit{($<$0.19)} in between most chosen metrics and the Maintainability Index. 
+
+However, when examining the correlation coefficient of each metric against the Halstead Effort, there are several statistical significances, despite still being weak. 
+
+\begin{figure}[H]
+	\includegraphics[width=\linewidth]{tcc_heff_class_level.png}
+	\caption{Class Level Plot of Total Cyclomatic Complexity Against Halstead Effort}
+	\label{fig:tccHeffClassLevel}  
+\end{figure}
+
+There is a moderate correlation \textit{(0.570)} (Figure \ref{fig:tccHeffClassLevel}) between total Cyclomatic Complexity and the Halstead Effort which is expected as the number of routes through a class increases, so will the mental taxation.
+
+There is also a very weak correlation (0.062), with a significance at the 0.05 level, between test coverage and Halstead Effort, which indicates there's a very small chance that as contributors increase the coverage of tests where they feel difficulty. However, this is too weak to consider at this level.
+
+\begin{figure}[H]
+	\includegraphics[width=\linewidth]{heff_MI_class_level.png}
+	\caption{Class Level Plot of Halstead Effort Against MI}
+	\label{fig:heffMIClassLevel}  
+\end{figure}
+
+An interesting result is the significant negative weak correlation (0.311) between the Halstead Effort and the Maintainability Index (Fig \ref{fig:heffMIClassLevel}). This would oddly seem to indicate for this particular system, at class level, that as one increases the other decreases; this would seem to show they are measuring vastly different effects of maintainability - something we hypothesised earlier.
+
+It is important to consider at this point we are talking about the maintenance of software. Code evolution rarely occurs to an isolate single source code file. Consider evolving tests alongside a change in the production code; or related components needing changing to achieve a single outcome. This leads to further our analysis to cover a more holistic point of view: packages.
+
+%at pkg level....
+
+\begin{figure}[H]
+	\includegraphics[width=\linewidth]{pkg-level-spearmans.png}
+	\caption{Package Level Spearman Correlation Analysis}
+	\label{fig:pkgLevelSpearmans}  
+\end{figure}
+
+When we perform a similar analysis using the same metrics at package level (Figure \ref{fig:pkgLevelSpearmans}), we begin to see strongly pronounced trends between the metrics.  Yet again, as commented previously, the Maintainability Index bares no correlation at all.
+
+\begin{figure}[H]
+	\includegraphics[width=\linewidth]{code_smells_vs_heff_pkg_level.png}
+	\caption{Code Smells vs Halstead Effort at Package Level (Filtered)}
+	\label{fig:codeSmellsHeffPkg}  
+\end{figure}
+
+Code smells and Halstead Effort strongly correlate \textit{(0.858)(Figure \ref{fig:codeSmellsHeffPkg})}. This suggests the mental effort required to maintain an area of the codebase increases in line with an increase in code smells. 
+
+\begin{figure}[H]
+	\includegraphics[width=\linewidth]{tcc_heff_pkg_level.png}
+	\caption{Total Cyclomatic vs Halstead Effort at Package Level (Filtered)}
+	\label{fig:tccHeffPkg}  
+\end{figure}
+
+A very strong correlation between total cyclomatic complexity and Halstead Effort is shown \textit{(0.957)}; it may be inferred that as cyclomatic complexity increases so does the mental effort required to maintain the code-base. This supports the assumption of a potential trend from the more granular class level metrics.
+
+There are also moderate correlation \textit{(0.427)} between the Production to Test Ratio and the Halstead Effort. This seems to suggest that a weak influence in increasing in the number of production lines written, without creation of tests, in the requirement more cognitive effort.
+
+Further to the Production to Test Ratio, Average Line Coverage bares a moderate positive correlation \textit{(0.427)} with the Halstead Effort. A likely interpretation would indicate where an area of code is more difficult to work with, there is likely to be greater number of tests.
+
+The Mean Assertion Density is also moderately correlated \textit{(0.481)} with the Halstead Effort, an indication that where contributors feel there is complexity, they will compensate by increasing the number of assertions in their existing test code. 
+
+Understanding cyclomatic complexity as another indication of how complicated a code may be, as opposed to just the mental effort required to maintain it, we look at how it correlates with other metrics.  
+
+\begin{figure}[H]
+	\includegraphics[width=\linewidth]{code_smells_tcc_pkg_level.png}
+	\caption{Total Cyclomatic Complexity vs Code Smells at Package Level}
+	\label{fig:tccCodeSmellsPkg}  
+\end{figure}
+
+There is a very strong correlation \textit{(0.841) (Figure \ref{fig:pkgLevelSpearmans}) (Figure \ref{fig:tccCodeSmellsPkg})} between Cyclomatic Complexity and Code Smells. This is indicative that more complex areas of the code also present visible symptoms and should be considered to potentially reduce the cyclomatic complexity.  
+
+Cyclomatic complexity and Production versus Test LOC Ratio also demonstrates a moderate correlation \textit{(0.454)}. A potential indication that areas of the code where complexity is greater can sometimes consist of far less tests.
+
+Cyclomatic complexity and Mean Test Line Coverage bare a moderate correlation \textit{(0.423)} which suggests that with higher cyclomatic complexity there is a tendency to produce more tests. 
+
+Cyclomatic complexity and Mean Assertion Density reveal a moderate correlation \textit{(0.403}) which suggests with higher complexity there is also a tendency to increase the number of assertions in a test case.
+
+Cyclomatic complexity, showing similar trends to that of the Halstead Effort could reveal the importance that the tests factors play in these.
+
+Mean Test Line Coverage and Mean Assertion Density bare a weak correlation \textit{(0.351)} which suggests that when more lines of code are tested, there is also a tendency to increase the number of assertions made in each test case.
+
+Code smells and Production to Test LOC Ratio show a moderate correlation \textit{(0.492)} which could indicate that code smells originate where there are less tests guiding the maintenance.
+
+Code smells and Mean Test Coverage show a moderate correlation \textit{(0.503)} which could indicate that where code smells increase, there is a tendency to result to a greater test coverage. 
+
+Code smells and Mean Assertion Density moderate correlation \textit{(0.557)}, reveals in general that more assertions are made where there is an increase in code smells. 
+
+\begin{figure}[H]
+	\includegraphics[width=\linewidth]{production_vs_test_loc_vs_meanAssertDensity_pkg.png}
+	\caption{Production to Test LOC Ratio vs Mean Assertion Density}
+	\label{fig:prodtestRatioVsMeanAssertDensity}  
+\end{figure}
+
+Production to test LOC Ratio and Average Assertion Density correlate strongly \textit{(0.613)}. This could imply a tendency (Figure \ref{fig:prodtestRatioVsMeanAssertDensity}) for resorting to more assertions in a test case as opposed to more granular test cases that assert individual behaviour.
+
+Overall, these trends appear to show that code smells do play an effect on how the contributors assess the importance of tests. Moreover, given how strongly code smells correlate with the Halstead Effort and Cyclomatic Complexity, we can see the importance of tests on the mental effort and the actual complexity of code. This, in line with the introductory literature, could superficially justify the importance of tests to reduce unnecessary future mental taxation during evolution of software. It could also support a trend that TDD is beneficial.
