@@ -41,7 +41,7 @@ For each metric, a correlative grid was composed, using Spearman's test. The cor
 		\label{tab:supportedCodeSmells}
 	\end{table}
 	
-	\item [Executed Statements Test coverage] Test coverage provides a rough idea of how many statements are executed throughout a test suite and thus, supposedly, how well tested it is.
+	\item [Executed Statements Test coverage] This test coverage \parencite{Miller:1963:SMA:366246.366248} provides a rough idea of how many statements are executed throughout a test suite and thus, supposedly, how well tested it is.
 	
 	This metric was collected with the clear understanding of being subjected to easy developer manipulation; lines may very well be executed, but incorrect assertions may result in 'untested' code.
 	
@@ -55,17 +55,17 @@ For each metric, a correlative grid was composed, using Spearman's test. The cor
 	
 	Unfortunately, collecting this metric, we must understand the the class where a test is implemented is not always named the same as the class it is testing; from observability this is especially the case with functional and integration tests. To gather a measurement of this, we default to the understanding that functionality grouping in Java resorts to the use of packages, and as such we measure this at statistic at package level. Test code is assumed to be any code which is not implemented directly under the main folder in a standard Java source layout. 
 	
-	Interestingly, there are several variations of this metric that rather than focusing on code, focus on assertion density and control points.
+	Interestingly, there are several variations of this metric that rather than focusing on code, focus on assertion density and control points. These would be of interest in further explorations.
 	
 	\item [Average Assertion Density] A tallied frequency of assertions made per given test case (method).
 	
-	Test suites in Java, are typically composed of methods each being a test case, which are executed under a given constructed context. Tests will execute any code which they are included in: this is referred to as Test Coverage. However, coverage does not necessarily indicate what functionality has been examined from the executed code.
+	Test suites in Java, are typically composed of methods each being a test case, which are executed under a given constructed context. Tests will execute any code which they are included in: this is referred to as Test Coverage. However, coverage does not necessarily indicate what functionality has been examined from the executed code; this is shown by assertions against the context.
 	
 	This is measured through the use of an in-house tool which assumes the use of JUnit. It collects all methods annotated with the JUnit \textit{@Test} annotation. It then collects the number of assertions present in each. This of course falls short of measuring all possible assertions as it is common in Java programming that custom assertion classes are built. 
 	
 	\item [Cyclomatic complexity] A metric aimed at measuring the code's \textit{level of structure} by analysing the number of avenues of execution. 
 	
-	Tests should be clear and non-complex. Production code is likely to have a far higher complexity. Higher complexity should suggest the requirement for focusing on testability.
+	Tests should be clear and non-complex. Production code is likely to have a far higher complexity. Higher complexity should suggest the requirement for focusing on testability. Higher complexity may often be associated with more difficult maintenance.
 	
 	\item [Maintainability Index (Control Benchmark)] A measurement of the effort required to maintain a given piece of code. 
 	

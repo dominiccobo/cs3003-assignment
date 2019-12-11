@@ -26,7 +26,7 @@ There is also a very weak correlation (0.062), with a significance at the 0.05 l
 	\label{fig:heffMIClassLevel}  
 \end{figure}
 
-An interesting result is the significant negative weak correlation (0.311) between the Halstead Effort and the Maintainability Index (Fig \ref{fig:heffMIClassLevel}). This would oddly seem to indicate for this particular system, at class level, that as one increases the other decreases; this may suggest they are measuring vastly different effects of maintainability - something we hypothesised earlier.
+An interesting result is the significant negative weak correlation (0.311) between the Halstead Effort and the Maintainability Index (Fig \ref{fig:heffMIClassLevel}). This would seem to indicate for this particular system, at class level, that as one increases the other decreases; this may suggest that the amount of metal effort decreases with a more maintainable system.
 
 It is important to consider at this point we are talking about the maintenance of software. Code evolution rarely occurs to an isolate single source code file. Consider evolving tests alongside a change in the production code; or related components needing changing to achieve a single outcome. This leads to further our analysis to cover a more holistic point of view: packages. We understand the applicability of this hypothesis about changes by invoking the \textit{git log} with the \textit{stat} flag appended against the source code repository.
 
